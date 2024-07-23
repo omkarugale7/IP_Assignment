@@ -1,0 +1,108 @@
+{
+	"info": {
+		"_postman_id": "795c5e47-55de-44ef-8295-b6285fa46d0f",
+		"name": "Image Processing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35228489"
+	},
+	"item": [
+		{
+			"name": "Upload API",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "multipart/form-data",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/home/vishal_jha/Desktop/Projects/sheet2.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Status API",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/status/:requestId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"status",
+						":requestId"
+					],
+					"variable": [
+						{
+							"key": "requestId",
+							"value": "e9a7419b-7a2a-4df3-9374-315f4f91c0f8"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Webhook Notification",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"status\": \"completed\",\n  \"requestId\": \"unique-request-id\",\n  \"processedData\": {\n    \"inputImageUrls\": [\"http://example.com/image1.jpg\"],\n    \"outputImageUrls\": [\"http://example.com/processed-image1.jpg\"]\n  }\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/webhook",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"webhook"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
